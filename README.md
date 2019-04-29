@@ -1,13 +1,26 @@
+[![CircleCI](https://circleci.com/gh/freshautomations/aws-lambda-go-template/tree/master.svg?style=svg)](https://circleci.com/gh/freshautomations/aws-lambda-go-template/tree/master)
+
 # AWS Lambda function template in Go
 
 ## Overview
 
-This AWS Lambda function template in Go implements HTTP routing.
-It can also be run as a stand-alone web service.
+This AWS Lambda function template in Go
+* implements HTTP routing using Gorilla/Mux
+* reads configuration from environment variables
+* it can also be run as a stand-alone web server
+* the standalone web server can also read configuration from a file
+* uses viper to allow YAML, JSON and other configuration file types.
 
-## How to use locally
+## How to start developing with the template
 
-For developers, it is easiest to run the code locally as a web service:
+The template runs as-is as a "Hello world" application.
+Add your custom code at the "// Todo:" comments to make it useful.
+
+* Build your functionality for the `/` page in the `MainHandler` function.
+* Create additional web Handler functions and register them as a Gorilla/Mux route
+in the `AddRoutes` function.
+* Set configuration defaults for unset variables in the `main` function.
+* Set a version number in the `main` function.
 
 ### Build
 
@@ -21,7 +34,7 @@ make build
 build/mylambda -webserver
 ```
 
-- it will run the local webserver on port 3000 and accept connections.
+* it will run the local webserver on port 3000 by default.
 
 ```bash
 curl localhost:3000
