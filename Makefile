@@ -5,7 +5,7 @@ export GO111MODULE=on
 ### Build
 
 build:
-	go build -ldflags "-extldflags \"-static\"" -o build/mylambda .
+	go build -ldflags "-extldflags \"-static\"" -o build/aws-lambda-go-template .
 
 build-linux:
 	GOOS=linux GOARCH=amd64 $(MAKE) build
@@ -30,7 +30,7 @@ lint: $(GOPATH)/bin/golangci-lint
 ### Localnet
 
 localnet-start:
-	build/mylambda -webserver
+	build/aws-lambda-go-template -webserver
 
 localnet-lambda:
 	# (Requirements: pip3 install aws-sam-cli)
