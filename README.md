@@ -31,7 +31,7 @@ make build
 ### Run
 
 ```bash
-build/mylambda -webserver
+build/aws-lambda-go-template -webserver
 ```
 
 * it will run the local webserver on port 3000 by default.
