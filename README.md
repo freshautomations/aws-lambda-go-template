@@ -40,6 +40,10 @@ build/aws-lambda-go-template -webserver
 curl localhost:3000
 ```
 
-## How to use on AWS Lambda
-The CircleCI configuration will deploy the code into AWS.
-CircleCI has to have AWS access code ID and secret access key set up.
+## How to deploy
+The `terraform` folder creates a deployment example to AWS using Hashicorp Terraform.
+
+1. Set up your AWS API credentials.
+2. run `make build-linux deploy`
+
+Terraform will print you the API Gateway link. Try `curl -X POST <link>` to see it in action.

@@ -36,4 +36,17 @@ localnet-lambda:
 	# (Requirements: pip3 install aws-sam-cli)
 	sam local start-api
 
-.PHONY: build build-linux test localnet-start localnet-lambda
+########################################
+### Deploy
+
+# Make sure your AWS credentials are in place.
+deploy:
+	file build/aws-lambda-go-template | grep ELF || (echo "Please build a linux binary." && false)
+	zip build/mylambda.zip build/aws-lambda-go-template
+	cd terraform && terraform init && terraform apply --auto-approve
+
+destroy:
+	cd terraform && terraform destroy
+
+.PHONY: build build-linux test localnet-start localnet-lambda deploy destroy
+
